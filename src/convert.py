@@ -37,6 +37,26 @@ for file in files :
         "social_media": "youtube", 
       })
 
+# convert twitter data
+files = os.listdir('../data/twitter_data')
+for file in files :
+  with open(('../data/twitter_data/' + file), 'r', encoding="utf8") as json_file:
+    data = json.load(json_file)
+    for elmt in data :
+      content = ""
+      if ("full_text" in elmt):
+        content = elmt["full_text"]
+      else:
+        content = elmt["text"]
+      writer.append({
+        "original_id": elmt["id_str"], 
+        "content": content, 
+        "from_id": elmt["user"]["id_str"], 
+        "from_name": elmt["user"]["screen_name"],
+        "created_at": elmt["created_at"],
+        "social_media": "twitter", 
+      })
+
 writer.close()
 
 # this is to check
