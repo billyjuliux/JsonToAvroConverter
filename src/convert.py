@@ -37,6 +37,63 @@ for file in files :
         "social_media": "youtube", 
       })
 
+#convert instagram data
+files = os.listdir('../data/instagram_comment_data')
+for file in files:
+  with open(('../data/instagram_comment_data/' + file), 'r', encoding="utf8") as json_file:
+    datas = json.load(json_file)
+    for data in datas:
+      writer.append({
+        "original_id": data["id"],
+        "content": data["text"],
+        "from_id": data["user"]["id"],
+        "from_name": data["user"]["username"],
+        "created_at": data["created_time"],
+        "social_media": "instagram",
+      })
+
+files = os.listdir('../data/instagram_media_data')
+for file in files:
+  with open(('../data/instagram_media_data/' + file), 'r', encoding="utf8") as json_file:
+    datas = json.load(json_file)
+    for data in datas:
+      writer.append({
+        "original_id": data["id"],
+        "content": data["caption"]["text"],
+        "from_id": data["user"]["id"],
+        "from_name": data["user"]["username"],
+        "created_at": data["created_time"],
+        "social_media": "instagram",
+      })
+
+files = os.listdir('../data/instagram_post_data')
+for file in files:
+  with open(('../data/instagram_post_data/' + file), 'r', encoding="utf8") as json_file:
+    datas = json.load(json_file)
+    for data in datas:
+      writer.append({
+        "original_id": data["id"],
+        "content": data["caption"]["text"],
+        "from_id": data["user"]["id"],
+        "from_name": data["user"]["username"],
+        "created_at": data["created_time"],
+        "social_media": "instagram",
+      })
+
+files = os.listdir('../data/instagram_status_data')
+for file in files:
+  with open(('../data/instagram_status_data/' + file), 'r', encoding="utf8") as json_file:
+    datas = json.load(json_file)
+    for data in datas:
+      writer.append({
+        "original_id": data["id"],
+        "content": data["caption"]["text"],
+        "from_id": data["user"]["id"],
+        "from_name": data["user"]["username"],
+        "created_at": data["created_time"],
+        "social_media": "instagram",
+      })
+
 writer.close()
 
 # this is to check
